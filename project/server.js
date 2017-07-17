@@ -4,8 +4,10 @@ const path = require('path');
 const PORT = 3000;
 const app = express();
 
+const getHello = require('./server/routers/hello');
 app.use(express.static(__dirname + '/public'));
 
+app.use('/', getHello);
 app.get("*", function (req, res) {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
