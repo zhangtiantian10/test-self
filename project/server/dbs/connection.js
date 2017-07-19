@@ -1,10 +1,14 @@
 const mysql = require('mysql');
 const connection = mysql.createConnection({
-    host: "mysql",
+    host: "localhost",
     user: "root",
-    password: "123456",
+    password: "",
     port: "3306",
-    database: "hello"
+    connectionLimit: 15,
+    queueLimit: 30,
+    acquireTimeout: 1000000
 });
+
+connection.connect();
 
 module.exports = connection;

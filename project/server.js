@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
-
+const createDatabase = require('./server/dbs/create-database');
 const PORT = 3000;
 const app = express();
-
+createDatabase();
 const getHello = require('./server/routers/hello');
 app.use(express.static(__dirname + '/public'));
 

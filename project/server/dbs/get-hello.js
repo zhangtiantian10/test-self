@@ -1,13 +1,18 @@
-const connection = require('./connection');
+function getHello(res) {
+    const connection = require('./connection');
 
-function getHello(res){
-    connection.connect();
-    connection.query("select * from hello", (err, result) => {
-        res.json(result[0].h);
+    connection.query("select * from helloWord2.hello", (err, result) => {
+        if (err) {
+            console.log(err);
+            if (err.errno === 1049) {
+            }
+        } else {
+            console.log(result);
+            res.json(result[0].h);
+        }
     });
-    connection.end();
 }
 
 module.exports = {
-    getHello
+    getHello,
 };
